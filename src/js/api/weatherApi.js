@@ -1,34 +1,25 @@
-const API_KEY = '9GQNAARSUJ5TJUMFBRBJN4QVG';
+async function getWeatherData(location, metric) {
 
-async function getWeatherData(location) {
-    const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=us&include=alerts&key=${API_KEY}&contentType=json`
-    );
+  const unit = metric ? 'metric' : 'us';
 
-    if (!response.ok) throw new Error(`Weather request failed: ${response.status}`);
+  const response = await fetch(
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?unitGroup=${unit}&include=hours&key=9GQNAARSUJ5TJUMFBRBJN4QVG&contentType=json`
+  );
 
-    console.log(response.json())
-    return response.json();
+  if (!response.ok) throw new Error(`Weather request failed: ${response.status}`);
 
+  return response.json();
 }
 
-function printWeatherReport(city) {
+async function getTodaysData(city, unit) {
   try {
-    getWeatherData(encodeURI(city)).then((data) => {
-      const today = data.days[0];
-      console.log(`
-      Location: ${city}
-      Date: ${today.datetime}
-      Temperature: ${today.temp}
-      Feels Like: ${today.feelslike}
-      Conditions: ${today.conditions}
-      Description: ${today.description}
-      `
-      );
-  })}
+    const data = await getWeatherData(encodeURI(city), unit);
+    console.log(data.days[0]);
+    return data.days[0];
+  }
   catch (err) {
     console.error(err.message);
   };
 }
 
-export { printWeatherReport }
+export { getTodaysData }

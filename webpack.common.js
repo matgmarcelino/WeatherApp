@@ -10,11 +10,13 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/index.html",
+      favicon: "./src/assets/icon.svg",
     }),
   ],
   output: {
     filename: "main.js",
     path: path.resolve(_dirname, "dist"),
+    publicPath: "",
     clean: true,
   },
   module: {
