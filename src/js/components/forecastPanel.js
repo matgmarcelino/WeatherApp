@@ -48,8 +48,8 @@ function createDayPanel(data, symbol) {
 
 export function toHourLabel(datetime) {
   const curHour = datetime.split(':')[0];
-  if (curHour === 0) return '12 AM';
-  if (curHour > 12) return `${curHour - 12} PM`;
+  if (curHour === '00') return '12 AM';
+  if (curHour > 12) return `${+curHour - 12} PM`;
   return `${curHour} AM`;
 }
 
