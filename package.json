@@ -15,16 +15,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matgmarcelino/template.git"
+    "url": "git+https://github.com/matgmarcelino/WeatherApp.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/template/"
+    "url": "https://github.com/WeatherApp/"
   },
-  "homepage": "https://github.com/matgmarcelino/template#readme",
+  "homepage": "https://github.com/matgmarcelino/WeatherApp#readme",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "css-loader": "^7.1.4",
